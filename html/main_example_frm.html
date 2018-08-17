@@ -1,58 +1,46 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>AUI快速完成布局</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <link rel="stylesheet" type="text/css" href="../css/aui-flex.css" />
     <link rel="stylesheet" type="text/css" href="../css/aui-slide.css" />
     <style type="text/css">
-        .aui-searchbar {
-            background: transparent;
-        }
-
         img.icon {
             display: block;
             margin: 0 auto;
             width: 60%;
         }
-
         .aui-grid-label {
             padding-top: 0.5rem;
             font-size: 0.7rem !important;
         }
-
         .goods-item {
             border: 1px solid #eee;
             text-align: center;
             padding: 0.5rem;
         }
-
         .goods-item img {
             display: block;
             width: 100%;
             height: 7rem;
         }
-
         .title {
             color: #666;
             font-size: 0.8rem;
             text-align: center;
         }
-
         .title p {
             font-size: 0.6rem;
             color: #ccc;
         }
-
         .goods-title {
             font-size: 0.7rem;
             color: #333 !important;
         }
-
         .hot img {
             width: 3rem;
             display: block;
@@ -60,31 +48,10 @@
         }
     </style>
 </head>
-
 <body>
-    <header class="aui-bar aui-bar-nav" id="aui-header">
-        <a class="aui-pull-left aui-btn" tapmode onclick="fnOpenCitySelectFrame()">
-            <span class="aui-iconfont aui-icon-down"></span>城市
-        </a>
-        <a class="aui-pull-right aui-btn" tapmode onclick="fnOpenStateSelectFrame">
-            <span class="aui-iconfont aui-icon-menu"></span>状态
-        </a>
-        <div class="aui-title" style="left:3rem; right:3rem;">
-            <div class="aui-searchbar" id="search">
-                <div class="aui-searchbar-input aui-border-radius">
-                    <i class="aui-iconfont aui-icon-search"></i>
-                    <input type="search" placeholder="输入关键字搜索（文章，动态）" id="search-input">
-                    <div class="aui-searchbar-clear-btn">
-                        <i class="aui-iconfont aui-icon-close"></i>
-                    </div>
-                </div>
-                <div class="aui-searchbar-btn" tapmode>取消</div>
-            </div>
-        </div>
-    </header>
     <section class="aui-content">
         <div id="aui-slide">
-            <div class="aui-slide-wrap">
+            <div class="aui-slide-wrap" >
                 <div class="aui-slide-node">
                     <img src="../image/demo/b1.png" />
                 </div>
@@ -98,21 +65,17 @@
                     <img src="../image/demo/b4.png" />
                 </div>
             </div>
-            <div class="aui-slide-page-wrap">
-                <!--分页容器-->
-            </div>
+            <div class="aui-slide-page-wrap"><!--分页容器--></div>
         </div>
     </section>
-    <section class="aui-content aui-margin-b-15">
-        <!--关注/附近按钮-->
+    <section class="aui-content aui-margin-b-15"> <!--关注/附近按钮-->
         <div class="aui-bar aui-bar-btn aui-bar-btn-round" style="width:30%;">
             <div class="aui-bar-btn-item aui-active">关注</div>
             <div class="aui-bar-btn-item">附近</div>
         </div>
     </section>
 
-    <div class="aui-content">
-        <!--用户动态模块-->
+    <div class="aui-content"><!--用户动态模块-->
         <div class="aui-card-list">
             <div class="aui-card-list-header">
                 <div></div>
@@ -123,8 +86,7 @@
             </div>
             <div class="aui-card-list-content-padded">
                 <div class="aui-row aui-row-padded">
-                    <div class="aui-card-list">
-                        <!--关注1-->
+                    <div class="aui-card-list"><!--关注1-->
                         <div class="aui-card-list-header aui-card-list-user aui-border-b">
                             <div class="aui-card-list-user-avatar">
                                 <img src="../image/aui-icon.png" class="aui-img-round" />
@@ -136,8 +98,7 @@
                             <div class="aui-card-list-user-info">广东深圳</div>
                         </div>
                         <div class="aui-card-list-content-padded">
-                            <img src="../image/guanzhuyonghu/1.png" />
-                            <!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
+                            <img src="../image/guanzhuyonghu/1.png" /><!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
                         </div>
                         <div class="aui-card-list-footer aui-border-t">
                             <div><i class="aui-iconfont aui-icon-star"></i> 收藏</div>
@@ -146,8 +107,7 @@
                             <div><i class="aui-iconfont aui-icon-paper"></i> 转发</div>
                         </div>
                     </div>
-                    <div class="aui-card-list">
-                        <!--关注2-->
+                    <div class="aui-card-list"><!--关注2-->
                         <div class="aui-card-list-header aui-card-list-user aui-border-b">
                             <div class="aui-card-list-user-avatar">
                                 <img src="../image/aui-icon.png" class="aui-img-round" />
@@ -159,8 +119,7 @@
                             <div class="aui-card-list-user-info">广东深圳</div>
                         </div>
                         <div class="aui-card-list-content-padded">
-                            <img src="../image/guanzhuyonghu/1.png" />
-                            <!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
+                            <img src="../image/guanzhuyonghu/1.png" /><!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
                         </div>
                         <div class="aui-card-list-footer aui-border-t">
                             <div><i class="aui-iconfont aui-icon-star"></i> 收藏</div>
@@ -169,8 +128,7 @@
                             <div><i class="aui-iconfont aui-icon-paper"></i> 转发</div>
                         </div>
                     </div>
-                    <div class="aui-card-list">
-                        <!--关注3-->
+                    <div class="aui-card-list"><!--关注3-->
                         <div class="aui-card-list-header aui-card-list-user aui-border-b">
                             <div class="aui-card-list-user-avatar">
                                 <img src="../image/aui-icon.png" class="aui-img-round" />
@@ -182,8 +140,7 @@
                             <div class="aui-card-list-user-info">广东深圳</div>
                         </div>
                         <div class="aui-card-list-content-padded">
-                            <img src="../image/guanzhuyonghu/1.png" />
-                            <!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
+                            <img src="../image/guanzhuyonghu/1.png" /><!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
                         </div>
                         <div class="aui-card-list-footer aui-border-t">
                             <div><i class="aui-iconfont aui-icon-star"></i> 收藏</div>
@@ -196,11 +153,39 @@
                 </div>
             </div>
         </div>
+<!--
+        <footer class="aui-bar aui-bar-tab" id="footer">
+            <div class="aui-bar-tab-item aui-active" tapmode onclick="fnOpenMainWin();">
+              <i class="aui-iconfont aui-icon-home"></i>
+              <div class="aui-bar-tab-label">首页</div>
+            </div>
+            <div class="aui-bar-tab-item" tapmode onclick="fnOpenMyWin();">
+                <div class="aui-dot"></div>
+                <i class="aui-iconfont aui-icon-my"></i>
+                <div class="aui-bar-tab-label">个人中心</div>
+            </div>
+            <div class="aui-bar-tab-item" tapmode onclick="fnOpenMoreWin();">
+                <div class="aui-dot"></div>
+                <i class="aui-iconfont aui-icon-more"></i>
+                <div class="aui-bar-tab-label">华大精准</div>
+            </div>
+        </footer>
+-->
     </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/aui-slide.js"></script>
 <script type="text/javascript">
-</script>
+    var slide = new auiSlide({
+        container:document.getElementById("aui-slide"),
+        "height":160,
+        "speed":300,
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'center'
+    })
 
+
+</script>
 </html>

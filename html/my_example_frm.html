@@ -17,13 +17,6 @@
 </head>
 <body>
     <!-- 顶部 -->
-    <header class="aui-bar aui-bar-nav" id="aui-header">
-
-        <a class="aui-btn aui-pull-right" tapmode onclick="fnOpenSignFrame()">
-            <span class="aui-iconfont"></span>签到
-        </a>
-        <div class="aui-title">个人中心</div>
-    </header>
     <section class="aui-content" id="user-info">
         <div class="aui-list aui-media-list aui-list-noborder aui-bg-info">
             <div class="aui-list-item aui-list-item-middle">
@@ -151,25 +144,6 @@
 <script type="text/javascript" src="../script/api.js" ></script>
 <script type="text/javascript">
     apiready = function () {
-    }
-    function fnOpenSignFrame(){
-      api.openFrame({
-          name: 'sign',
-          url: './sign_frame.html',
-          rect: {
-              x: 0,
-              y: 35,
-              w: 'auto',
-              h: 35
-          },
-          pageParam: {
-              name: 'test'
-          },
-          bounces: true,
-          bgColor: '#00 000000',
-          vScrollBarEnabled: true,
-          hScrollBarEnabled: true
-      });
     }
 </script>
 </html>

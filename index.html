@@ -31,6 +31,7 @@
             <li class="border-b" ></li>
         </ul>
     </header>
+
     <div id="main" class="flex-con">
 
     </div>
@@ -53,6 +54,23 @@
             color: '#6ab494'
         });
         funIniGroup();
+        api.openFrame({
+            name: 'minicart_frame',
+            url: 'html/minicart_frame.html',
+            rect: {
+                x: 0,
+                y: api.winHeight - 90,
+                w: 150,
+                h: 34
+            },
+            bounces: false // 关闭弹动
+        });
+        api.bringFrameToFront({
+            from: 'minicart_frame'
+        });
+
+        // 标记为已经打开
+        framesOpened = true;
     }
 
     function funIniGroup(){
@@ -68,7 +86,7 @@
         }
         api.openFrameGroup({
             name: 'group',
-            scrollEnabled: true,
+            scrollEnabled: false,
             bounces: true,
             rect: {
                 x: 0,

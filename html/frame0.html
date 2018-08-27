@@ -1,90 +1,85 @@
 <!DOCTYPE HTML>
 <html>
-
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>AUI快速完成布局</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
     <link rel="stylesheet" type="text/css" href="../css/aui-flex.css" />
     <link rel="stylesheet" type="text/css" href="../css/aui-slide.css" />
     <style type="text/css">
+    header .left {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100px;
+        height: 50px;
+    }
+
+    header .left .arrow {
+        position: absolute;
+        bottom: 21px;
+        left: 11px;
+        width: 13px;
+        height: 8px;
+        background: url(../image/arrow_down.png);
+        background-size: 13px 8px;
+        background-position: center center;
+        background-repeat: no-repeat;
+        -webkit-transition: 200ms;
+        transition: 200ms;
+    }
+
+    header .left .arrow.active {
+        -webkit-transform: rotate(180deg);
+        transform: rotate(180deg);
+    }
+
+    header .left .city {
+        position: relative;
+        z-index: 2;
+        width: 100%;
+        height: 50px;
+        padding-left: 27px;
+        box-sizing: border-box;
+        line-height: 50px;
+        font-size: 14px;
+        color: #fff;
+        text-align: left;
+    }
+
         .aui-searchbar {
             background: transparent;
         }
 
-        img.icon {
-            display: block;
-            margin: 0 auto;
-            width: 60%;
-        }
-
-        .aui-grid-label {
-            padding-top: 0.5rem;
-            font-size: 0.7rem !important;
-        }
-
-        .goods-item {
-            border: 1px solid #eee;
-            text-align: center;
-            padding: 0.5rem;
-        }
-
-        .goods-item img {
-            display: block;
-            width: 100%;
-            height: 7rem;
-        }
-
-        .title {
-            color: #666;
-            font-size: 0.8rem;
-            text-align: center;
-        }
-
-        .title p {
-            font-size: 0.6rem;
-            color: #ccc;
-        }
-
-        .goods-title {
-            font-size: 0.7rem;
-            color: #333 !important;
-        }
-
-        .hot img {
-            width: 3rem;
-            display: block;
-            margin: 0 auto;
-        }
     </style>
 </head>
-
 <body>
-    <header class="aui-bar aui-bar-nav" id="aui-header">
-        <a class="aui-pull-left aui-btn" tapmode onclick="fnOpenCitySelectFrame()">
-            <span class="aui-iconfont aui-icon-down"></span>城市
-        </a>
-        <a class="aui-pull-right aui-btn" tapmode onclick="fnOpenStateSelectFrame">
-            <span class="aui-iconfont aui-icon-menu"></span>状态
-        </a>
-        <div class="aui-title" style="left:3rem; right:3rem;">
-            <div class="aui-searchbar" id="search">
-                <div class="aui-searchbar-input aui-border-radius">
-                    <i class="aui-iconfont aui-icon-search"></i>
-                    <input type="search" placeholder="输入关键字搜索（文章，动态）" id="search-input">
-                    <div class="aui-searchbar-clear-btn">
-                        <i class="aui-iconfont aui-icon-close"></i>
-                    </div>
-                </div>
-                <div class="aui-searchbar-btn" tapmode>取消</div>
-            </div>
-        </div>
-    </header>
+  <header class="aui-bar aui-bar-nav" id="aui-header">
+    <div class="left" tapmode onclick="fnOpenCitySelectorFrame();">
+        <div class="arrow" id="arrow"></div>
+        <div class="city" id="city">城市</div>
+    </div>
+      <a class="aui-pull-right aui-btn" tapmode onclick="fnOpenStateSelectorFrame();">
+          <div class="state" id="state">状态</div>
+      </a>
+      <div class="aui-title" style="left:3rem; right:3rem;">
+          <div class="aui-searchbar" id="search">
+              <div class="aui-searchbar-input aui-border-radius">
+                  <i class="aui-iconfont aui-icon-search"></i>
+                  <input type="search" placeholder="输入关键字搜索（文章，动态）" id="search-input">
+                  <div class="aui-searchbar-clear-btn">
+                      <i class="aui-iconfont aui-icon-close"></i>
+                  </div>
+              </div>
+              <div class="aui-searchbar-btn" tapmode>取消</div>
+          </div>
+      </div>
+  </header>
     <section class="aui-content">
         <div id="aui-slide">
-            <div class="aui-slide-wrap">
+            <div class="aui-slide-wrap" >
                 <div class="aui-slide-node">
                     <img src="../image/demo/b1.png" />
                 </div>
@@ -98,21 +93,17 @@
                     <img src="../image/demo/b4.png" />
                 </div>
             </div>
-            <div class="aui-slide-page-wrap">
-                <!--分页容器-->
-            </div>
+            <div class="aui-slide-page-wrap"><!--分页容器--></div>
         </div>
     </section>
-    <section class="aui-content aui-margin-b-15">
-        <!--关注/附近按钮-->
+    <section class="aui-content aui-margin-b-15"> <!--关注/附近按钮-->
         <div class="aui-bar aui-bar-btn aui-bar-btn-round" style="width:30%;">
             <div class="aui-bar-btn-item aui-active">关注</div>
             <div class="aui-bar-btn-item">附近</div>
         </div>
     </section>
 
-    <div class="aui-content">
-        <!--用户动态模块-->
+    <div class="aui-content"><!--用户动态模块-->
         <div class="aui-card-list">
             <div class="aui-card-list-header">
                 <div></div>
@@ -123,8 +114,7 @@
             </div>
             <div class="aui-card-list-content-padded">
                 <div class="aui-row aui-row-padded">
-                    <div class="aui-card-list">
-                        <!--关注1-->
+                    <div class="aui-card-list"><!--关注1-->
                         <div class="aui-card-list-header aui-card-list-user aui-border-b">
                             <div class="aui-card-list-user-avatar">
                                 <img src="../image/aui-icon.png" class="aui-img-round" />
@@ -136,8 +126,7 @@
                             <div class="aui-card-list-user-info">广东深圳</div>
                         </div>
                         <div class="aui-card-list-content-padded">
-                            <img src="../image/guanzhuyonghu/1.png" />
-                            <!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
+                            <img src="../image/guanzhuyonghu/1.png" /><!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
                         </div>
                         <div class="aui-card-list-footer aui-border-t">
                             <div><i class="aui-iconfont aui-icon-star"></i> 收藏</div>
@@ -146,8 +135,7 @@
                             <div><i class="aui-iconfont aui-icon-paper"></i> 转发</div>
                         </div>
                     </div>
-                    <div class="aui-card-list">
-                        <!--关注2-->
+                    <div class="aui-card-list"><!--关注2-->
                         <div class="aui-card-list-header aui-card-list-user aui-border-b">
                             <div class="aui-card-list-user-avatar">
                                 <img src="../image/aui-icon.png" class="aui-img-round" />
@@ -159,8 +147,7 @@
                             <div class="aui-card-list-user-info">广东深圳</div>
                         </div>
                         <div class="aui-card-list-content-padded">
-                            <img src="../image/guanzhuyonghu/1.png" />
-                            <!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
+                            <img src="../image/guanzhuyonghu/1.png" /><!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
                         </div>
                         <div class="aui-card-list-footer aui-border-t">
                             <div><i class="aui-iconfont aui-icon-star"></i> 收藏</div>
@@ -169,8 +156,7 @@
                             <div><i class="aui-iconfont aui-icon-paper"></i> 转发</div>
                         </div>
                     </div>
-                    <div class="aui-card-list">
-                        <!--关注3-->
+                    <div class="aui-card-list"><!--关注3-->
                         <div class="aui-card-list-header aui-card-list-user aui-border-b">
                             <div class="aui-card-list-user-avatar">
                                 <img src="../image/aui-icon.png" class="aui-img-round" />
@@ -182,8 +168,7 @@
                             <div class="aui-card-list-user-info">广东深圳</div>
                         </div>
                         <div class="aui-card-list-content-padded">
-                            <img src="../image/guanzhuyonghu/1.png" />
-                            <!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
+                            <img src="../image/guanzhuyonghu/1.png" /><!--也可以放链接<img src="http://img10.360buyimg.com/n1/s450x450_jfs/t4276/257/2416766721/125228/ba72a107/58d1d078N20e18b62.jpg">-->
                         </div>
                         <div class="aui-card-list-footer aui-border-t">
                             <div><i class="aui-iconfont aui-icon-star"></i> 收藏</div>
@@ -196,11 +181,223 @@
                 </div>
             </div>
         </div>
+<!--
+        <footer class="aui-bar aui-bar-tab" id="footer">
+            <div class="aui-bar-tab-item aui-active" tapmode onclick="fnOpenMainWin();">
+              <i class="aui-iconfont aui-icon-home"></i>
+              <div class="aui-bar-tab-label">首页</div>
+            </div>
+            <div class="aui-bar-tab-item" tapmode onclick="fnOpenMyWin();">
+                <div class="aui-dot"></div>
+                <i class="aui-iconfont aui-icon-my"></i>
+                <div class="aui-bar-tab-label">个人中心</div>
+            </div>
+            <div class="aui-bar-tab-item" tapmode onclick="fnOpenMoreWin();">
+                <div class="aui-dot"></div>
+                <i class="aui-iconfont aui-icon-more"></i>
+                <div class="aui-bar-tab-label">华大精准</div>
+            </div>
+        </footer>
+-->
     </div>
 </body>
 <script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript" src="../script/aui-slide.js"></script>
 <script type="text/javascript">
-</script>
+apiready = function() {
 
+    // 初始化事件监听
+    initEventListenner();
+
+    // 获取当前的位置信息
+    initLocation();
+
+    var header = $api.byId('header');
+    var nav = $api.byId('nav');
+
+    // 实现沉浸式状态栏效果
+    $api.fixStatusBar(header);
+
+    // 计算header和nav元素的高度
+
+
+    // 从缓存中获取上一次选择的城市信息
+    var currentCity = $api.getStorage('currentCity');
+    var currentstate= $api.getStorage('currentstate');
+    // 如果获取不到，说明还没有选择城市，打开城市选择Frame，并返回
+    if (!currentCity) {
+        fnOpenCitySelectorFrame();
+        return;
+    }
+    if(currentstate){updateStateName(currentstate);}
+    // 更新界面上显示的城市名称
+    updateCityName(currentCity.name);
+    // 打开首页的所有Frames
+};
+
+var framesOpened = false,
+    menus, headerH, navH, bMap, city, state;
+
+function updateCityName(cityName_) {
+    city = $api.byId('city');
+    city.innerHTML = cityName_
+}
+
+function resetArrowState() {
+    var arrow = $api.byId('arrow');
+    if ($api.hasCls(arrow, 'active')) {
+        $api.removeCls(arrow, 'active');
+    }
+}
+
+function setArrowStateActive() {
+    var arrow = $api.byId('arrow');
+    if (!$api.hasCls(arrow, 'active')) {
+        $api.addCls(arrow, 'active');
+    }
+}
+
+// 初始化事件监听
+function initEventListenner() {
+    // 监听城市切换事件（自定义事件）
+    api.addEventListener({
+        name: 'cityChange'
+    }, function(ret, err) {
+        if (ret) {
+            // 更新城市名称
+            updateCityName(ret.value.currentCity.name);
+
+            // 更新箭头状态
+            resetArrowState();
+
+            // 打开商品列表等首页的Frames
+        }
+    });
+
+
+    // 拦截Android的返回键，在首页点击返回键，提示退出应用
+    api.addEventListener({
+        name: 'keyback'
+    }, function(ret, err) {
+        api.confirm({
+            title: '提示',
+            msg: '是否退出应用',
+            buttons: ['确定', '取消']
+        }, function(ret, err) {
+            if (ret.buttonIndex == 1) {
+                // 关闭当前的主Widget，就可以实现推出APP的效果
+                api.closeWidget({
+                    silent: true //直接退出，无需提示
+                });
+            }
+        });
+    });
+}
+
+function initLocation() {
+    // 加载百度地图模块
+    bMap = api.require('bMap');
+
+    // 获取当前经纬度
+    bMap.getLocation({
+        accuracy: '1000m', // 定位所在城市信息，不需要精准定位
+        autoStop: true, // 定位到经纬度后，立即自动停止定位服务
+        filter: 100000 // 基本无需处理位置更新的情况
+    }, function(ret, err) {
+        if (err) {
+          console.log(err)
+          return
+        }
+        if (ret.status) {
+            // 根据经纬度获得城市名称
+            fnGetCityNameFromLocation(ret);
+        } else {
+            alert(err.code);
+        }
+    });
+}
+
+// 根据经纬度获得城市名称
+function fnGetCityNameFromLocation(location_) {
+    bMap.getNameFromCoords({
+        lon: location_.lon,
+        lat: location_.lat
+    }, function(ret, err) {
+        if (ret.status) {
+            // 判断当前所在的城市与上一次选择的城市是否一致
+            fnCheckCityChange(ret.city);
+        }
+    });
+}
+
+// 判断当前所在的城市与上一次选择的城市是否一致，不一致则打开城市选择Frame
+function fnCheckCityChange(cityName_) {
+    if (!city) {
+        return;
+    }
+    if (city.innerHTML != cityName_) {
+        fnOpenCitySelectorFrame();
+    }
+}
+
+// 打开城市选择Frame
+function fnOpenCitySelectorFrame() {
+    // 设置箭头状态
+    setArrowStateActive();
+
+    // 根据UI架构设计（ui-architecture.xmind），打开城市选择Frame
+    api.openFrame({
+        name: 'cityselector_frame',
+        url: './cityselector_frame.html',
+        bgColor: 'rgba(0, 0, 0, 0.8)',
+        rect: {
+            x: 0,
+            y: headerH,
+            w: 'auto', // 自动填充所在Window的宽度
+            h: 'auto' // 自动填充所在Window的高度
+        },
+        bounces: true // 打开弹动
+    });
+}
+
+    var slide = new auiSlide({
+        container:document.getElementById("aui-slide"),
+        "height":160,
+        "speed":300,
+        "pageShow":true,
+        "pageStyle":'dot',
+        "loop":true,
+        'dotPosition':'center'
+    })
+
+    function updateStateName(stateName_) {
+        state = $api.byId('state');
+        state.innerHTML = stateName_
+    }
+
+function fnOpenStateSelectorFrame(){
+  api.openFrame({
+      name: 'stateselector_frame',
+      url: './stateselector_frame.html',
+      bgColor: 'rgba(0, 0, 0, 0.8)',
+      rect: {
+          x: 0,
+          y: headerH,
+          w: 'auto', // 自动填充所在Window的宽度
+          h: 'auto' // 自动填充所在Window的高度
+      },
+      bounces: true // 打开弹动
+  });
+  api.addEventListener({
+      name: 'stateChange'
+  }, function(ret, err) {
+      if (ret) {
+          // 更新城市名称
+
+          updateStateName(ret.value.currentstate);
+      }
+  });
+}
+
+</script>
 </html>

@@ -1,8 +1,9 @@
 <!DOCTYPE HTML>
 <html>
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+    <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0" />
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>AUI快速完成布局</title>
     <link rel="stylesheet" type="text/css" href="../css/aui.css" />
@@ -10,15 +11,19 @@
         .text-white {
             color: #ffffff !important;
         }
+
         .aui-grid [class*=aui-col-] {
             padding: 0.75rem 0;
         }
     </style>
 </head>
+
 <body>
     <!-- 顶部 -->
     <header class="aui-bar aui-bar-nav" id="aui-header">
-
+        <a class="aui-btn aui-pull-left" tapmode onclick="fnOpenLoginFrame()">
+            <span class="aui-iconfont"></span>登录
+        </a>
         <a class="aui-btn aui-pull-right" tapmode onclick="fnOpenSignFrame()">
             <span class="aui-iconfont"></span>签到
         </a>
@@ -29,20 +34,20 @@
             <div class="aui-list-item aui-list-item-middle">
                 <div class="aui-media-list-item-inner ">
                     <div class="aui-list-item-media" style="width:3rem;">
-                        <img src="../image/demo1.png" class="aui-img-round" >
+                        <img src="../image/demo1.png" class="aui-img-round" tapmode onclick="openpicture();">
                     </div>
                     <div class="aui-list-item-inner aui-list-item-arrow">
                         <div class="aui-list-item-text text-white aui-font-size-18">
-                          <div class="aui-label aui-label-outlined">
-                              <i class="aui-iconfont aui-icon-my aui-font-size-12"></i>
-                              <i class="aui-iconfont aui-font-size-18">用户名</i>
-                          </div>
+                            <div class="aui-label aui-label-outlined">
+                                <i class="aui-iconfont aui-icon-my aui-font-size-12"></i>
+                                <i class="aui-iconfont aui-font-size-18" id='username'>用户名</i>
+                            </div>
                         </div>
                         <div class="aui-list-item-text text-white">
-                           <div>
-                               <div class="aui-iconfont  aui-font-size-12">关注 888</div>
-                               <div class="aui-iconfont  aui-font-size-12">粉丝 123</div>
-                           </div>
+                            <div>
+                                <div class="aui-iconfont  aui-font-size-12">关注 888</div>
+                                <div class="aui-iconfont  aui-font-size-12">粉丝 123</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -64,7 +69,7 @@
                 <big class="aui-text-danger ">0.00<small> 个</small></big>
                 <div class="aui-gird-lable aui-font-size-12">华大币</div>
             </div>
-            <div class="aui-col-xs-4 aui-border-l">
+            <div class="aui-col-xs-4 aui-border-l" tapmode onclick="fnOpenSetting();">
                 <i class="aui-iconfont aui-icon-gear "></i>
                 <div class="aui-grid-label ">设置</div>
             </div>
@@ -73,11 +78,11 @@
 
     <section class="aui-content">
         <ul class="aui-list aui-list-in aui-margin-b-15">
-                <p>
-                    <div class="aui-btn aui-btn-block aui-btn-sm aui-font-size-20">
-                        <div class="aui-list-item-inner aui-list-item-edit">我的档案</div>
-                    </div>
-                </p>
+            <p>
+                <div class="aui-btn aui-btn-block aui-btn-sm aui-font-size-20">
+                    <div class="aui-list-item-inner aui-list-item-edit">我的档案</div>
+                </div>
+            </p>
         </ul>
         <ul class="aui-list aui-list-in aui-margin-b-15">
             <li class="aui-list-item">
@@ -109,11 +114,11 @@
             </li>
         </ul>
         <ul class="aui-list aui-list-in aui-margin-b-15">
-                <p>
-                    <div class="aui-btn aui-btn-block aui-btn-sm aui-font-size-20">
-                      <div class="aui-list-item-inner aui-list-item-edit">我的日志</div>
-                    </div>
-                </p>
+            <p>
+                <div class="aui-btn aui-btn-block aui-btn-sm aui-font-size-20">
+                    <div class="aui-list-item-inner aui-list-item-edit">我的日志</div>
+                </div>
+            </p>
         </ul>
 
         <ul class="aui-list aui-list-in">
@@ -148,28 +153,79 @@
     </section>
 
 </body>
-<script type="text/javascript" src="../script/api.js" ></script>
+<script type="text/javascript" src="../script/api.js"></script>
 <script type="text/javascript">
-    apiready = function () {
+    apiready = function() {
+        var currentuser = $api.getStorage('currentuser');
+        initEventListenner();
     }
-    function fnOpenSignFrame(){
-      api.openFrame({
-          name: 'sign',
-          url: './sign_frame.html',
-          rect: {
-              x: 0,
-              y: 35,
-              w: 'auto',
-              h: 35
-          },
-          pageParam: {
-              name: 'test'
-          },
-          bounces: true,
-          bgColor: '#00 000000',
-          vScrollBarEnabled: true,
-          hScrollBarEnabled: true
-      });
+
+    function initEventListenner() {
+        api.addEventListener({
+            name: 'userChange'
+        }, function(ret, err) {
+            if (ret) {
+                // 更新用户名称
+                updateuserName(ret.value.currentuser);
+            }
+        });
+    }
+
+    function updateuserName(userName_) {
+        username = $api.byId('username');
+        username.innerHTML = userName_
+    }
+
+    function fnOpenSignFrame() {
+        api.openFrame({
+            name: 'sign',
+            url: './sign_frame.html',
+            rect: {
+                x: 0,
+                y: 35,
+                w: 'auto',
+                h: 35
+            },
+            pageParam: {
+                name: 'test'
+            },
+            bounces: true,
+            bgColor: '#00 000000',
+            vScrollBarEnabled: true,
+            hScrollBarEnabled: true
+        });
+    }
+
+    function fnOpenLoginFrame() {
+        api.openWin({
+            name: 'login',
+            url: './login.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+
+    }
+
+    function fnOpenSetting() {
+        api.openWin({
+            name: 'setting',
+            url: './setting.html',
+            pageParam: {
+                name: 'test'
+            }
+        });
+    }
+
+    function openpicture() {
+        api.openWin({
+            reload: true,
+            name: 'getpicture',
+            url: './getpicture.html',
+            vScrollBarEnabled: false,
+            hScrollBarEnabled: false
+        });
     }
 </script>
+
 </html>
